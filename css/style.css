@@ -1,0 +1,314 @@
+body{
+    background-image: url(imagem/back4.jpg);
+    font-family: sans-serif;
+    display: flex;
+}
+
+.form{
+    width: 500px;
+    margin: auto;
+    padding-top:40px;
+}
+
+.formzao{
+    width: 900px;
+    margin: auto;
+    padding-top: 40px;
+}
+
+.cadastro{
+    width: 900px;
+    margin: auto;
+    padding-top: 40px;
+}
+
+.editar{
+    width: 900px;
+    margin: auto;
+    padding-top: 40px;
+    display: flex;
+}
+
+.imgcadastro{
+    width: 300px;
+}
+
+.card{
+    width: 500px;
+    box-shadow: 1px 1px 5px #ccc;
+    position: absolute;
+    background-color: white;
+    align-items: center;
+    flex: auto;
+}
+.card-insere-trabalhador{
+position: relative;
+width: 900px;
+background-color: white;
+display: flex;
+flex-direction: column;
+border-radius: 20px;
+}
+
+.usuario-perfil{
+    background-color: rgb(20, 130, 194);
+    padding: 0px;
+    padding: auto;
+    position:relative;
+    border-radius: 20px;
+}
+
+.card-group{
+    position: relative;
+    margin-left: 30px;
+    align-items: center;
+    width: 80%;
+}
+
+#just{
+    width: 40%;
+    border: teal;
+    margin-left: 250px;
+}
+
+#botao{
+    background-color: teal;
+    text-align: center;
+    border-radius: 30px;
+    color: white;
+    outline: 0;
+    border: 0;
+    padding: 3px;
+    font-size: 12px;
+}
+
+#botaocadastro{
+    background-color: teal;
+    text-align: center;
+    border-radius: 30px;
+    color: white;
+    outline: 0;
+    border: 0;
+    padding: 6px;
+    font-size: 20px;
+}
+
+#senha{
+    margin-top: -30px;
+}
+
+.card-top{
+    text-align:center;
+}
+
+.card-group{
+    margin-bottom: 30px;
+}
+
+.card-cadastro{
+    border-radius: 5px;
+    outline: 0;
+    width: 100%;
+    height: 25px;
+    padding: 5px;
+    padding-right: 5px;
+}
+
+
+
+
+.card-group > label{
+width: 100%;
+color: rgb(0, 0, 0);
+display: block;
+}
+
+.card-group #lembre{
+    margin-left: 340px;
+    margin-top: -37px;
+}
+
+.card-group > input{
+border-radius: 5px;
+outline: 0;
+width: 100%;
+height: 25px;
+padding: 5px;
+padding-right: 5px;
+}
+
+.imglogin{
+    border-radius: 100px;
+    width: 150px;
+    left: 150px;
+    box-shadow: 1px 1px 10px rgb(46, 45, 45);
+}
+
+.titulo{
+    color:rgb(0, 0, 0);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.usuario{
+    text-align: center;
+    background-color: rgb(20, 130, 194);
+    border-radius: 10px;
+    width: 50%;
+}
+
+.perfil{
+    text-align: center;
+    background-color: rgb(20, 130, 194);
+    border-radius: 10px;
+    width: 40%;
+    margin-left: 450px;
+    margin-top: -48px;
+}
+
+#bt-insere{
+    background-color: rgb(20, 130, 194);
+    outline: 0;
+    color: white;
+    width: 20%;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+table{
+    border-radius: 10px;
+    background-color: rgb(242, 244, 248);
+    box-shadow: 1px 1px 5px rgb(5, 5, 5);
+    width: 100%;
+}
+
+td{
+    text-align: center;
+}
+
+#legenda{
+    margin-top: -20px;
+    font-size: 20px;
+}
+
+.bts{
+    text-align: end;
+}
+
+.icons{
+    margin-top: 5px;
+    text-align: end;
+}
+
+#text{
+    text-align: center;
+    border-radius: 10px;
+    background-color: rgb(81, 161, 236);
+}
+
+#stat{
+    width: 30%;
+}
+
+#periodo{
+    background-color: rgba(100, 113, 121, 0.897);
+    border-radius: 20px;
+    width: 55%;
+    box-shadow: 1px 1px 5px rgb(0, 0, 0);
+    font-size: 20px;
+    padding-inline: 40px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+#grafico{
+    float:right;
+    margin-top: -140px;
+}
+
+#ficacerto{
+    text-align: center;
+    margin-top: 18px;
+}
+
+
+#tabelona{
+    width: 65%;
+}
+
+.divMae{
+    background: rgb(46, 45, 45);
+
+    width: 100%;
+    max-width: 500px;
+
+    margin: 32px auto;
+    padding: 32px 64px;
+
+    display: flex;
+    
+}
+
+.btn{
+ 
+ background-color: rgb(20, 130, 194);
+ width: 100%;
+ border-radius: 30px;
+ padding: 15px;
+ color: white;
+ border: 0px;
+ outline: 0;
+ margin-top: 10px;
+ margin-bottom: 10px;
+ cursor:pointer;
+
+}
+
+.btn:hover{
+   background-color: rgb(72, 184, 218);
+   color: black;
+}
+
+.lembre{
+    text-align: right;
+    position: relative;
+    margin-top: -20px;
+}
+
+.carai{
+    display: flex;
+    text-align: start;
+    flex-direction: row;
+    position: relative;
+    margin-left: 300px;
+    padding-top: 200px;
+
+}
+
+.indice-lado{
+    float: right;
+    background-color: white;
+    position: relative;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 20px;
+    height: 15%;
+    width: 15%;
+}
+
+.card-hora{
+    width: 1000px;
+    background-color:white;
+    border-radius: 25px;
+    box-shadow: 1px 1px 5px;
+}
+
+.indice{
+    width: 15%;
+    height: 15%;
+    background-color: white;
+    border-radius: 15px;
+    margin-right: 15px;
+    position: relative;
+    list-style: none;
+    text-align: center;
+}

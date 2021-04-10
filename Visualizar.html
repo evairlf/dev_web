@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edita Hora</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+    <form class= "editar"action="">
+        <div class="indice-lado">
+            <ul style="list-style: none;">
+            <li><a href="inseretrabalhador.html">Inserir</a></li>
+            <li><a href="editaHora.html">Editar</a></li>
+            <li><a href="">Visualizar</a></li>
+          </ul>
+        </div>
+    <div class="card-insere-trabalhador">
+        
+        <div>
+            <h2 class="usuario">Usuário: Tanto Faz</h2>
+            <h2 class="perfil">Perfil:Trabalhador</h2>
+        </div>
+        <div class="card-group"> 
+            <h2>Consulta</h2>
+            <table align="center">
+                <thread>
+                    <tr>
+                        <th>Data Entrada</th>
+                        <th>Data Saida</th>
+                        <th>Justificativa</th>
+                    </tr>
+                    <td><input type="date"></td>
+                    <td><input type="date"></td>
+                    <td> <select>
+                        <option>Prod.Conteudo</option>
+                        <option>Versionamento</option>
+                        <option>Capacitação</option>
+                        <option>Empréstimo</option>
+                    </select></td>
+                </thread>
+            </table>
+
+            <div><button id="bt-insere"type="submit">Inserir</button></div>
+            
+            <h2>Lista De Horas</h2>
+            <table align="center">
+                <thread>
+                    <tr>
+                        <th>Data</th>
+                        <th>Hora Entrada</th>
+                        <th>Hora Saida</th>
+                        <th>Total Horas</th>
+                        <th>Justificativa</th>
+                    </tr>
+                    <td>4/9/2020</td>
+                    <td>6:52</td>
+                    <td>17:52</td>
+                    <td>222</td>
+                    <td>Prod.Conteudo</td>
+                    <tr><td>5/9/2020</td>
+                        <td>6:30</td>
+                        <td>17:52</td>
+                        <td>222</td>
+                        <td>Versionamento</td>
+                     </tr>
+                     <tr><td>6/09/2020</td>
+                        <td>7:02</td>
+                        <td>17:52</td>
+                        <td>222</td>
+                        <td>Capacitação</td>
+                     </tr>
+                     <tr><td>7/09/2020</td>
+                        <td>7:00</td>
+                        <td>17:52</td>
+                        <td>222</td>
+                        <td>Empréstimo</td>
+                     </tr>
+                </thread>
+            </table>
+            <div class="icons"><img src="css/imagem/pdf-download-2617 (2).png" alt=""><img src="css/imagem/excel-4963.png" alt=""><img src="css/imagem/printer-1434.png" alt=""></div>
+            <div><h2>Legenda: </h2>
+                <p id="legenda"><img src="css/imagem/u206.png" alt="xinforinfolaespectral"> Editar <img src="css/imagem/u220.png" alt="xinforinfolaespectral"> Apagar</p>
+            </div>
+
+        </div>
+       <h2 id="text">ENVIADO PARA O AVALIADOR!</h2>
+       
+        </div>
+        
+        
+    </div>
+
+        
+</form>
+    
+</body>
+</html>

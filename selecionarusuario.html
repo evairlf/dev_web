@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleção de Perfil</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script>
+
+        function valida() {
+
+            var bagui = document.getElementById("bagui");
+
+            if(bagui.value == ""){
+                alert("ta de brinqueixon?");
+                alert("cuzam");
+                alert("do caraio");
+                alert("se mandar errado denvovo eu te fodo");
+                bagui.focus();
+                return false;
+            }  
+
+        }
+        
+    </script>
+
+</head>
+<body>
+
+    <form class= "formzao" action="">
+
+    <div class="card">
+        <div class ="card-top">
+            <h2 class="titulo">Selecione o perfil de Usuário</h2>
+            <p>Perfis de Usuários</p>
+        </div>
+        
+        <div>
+            <select id="bagui">
+                <option select disable value="">Selecione</option>
+                <option>Trabalhador</option>
+                <option>Coordenador de curso</option>
+                <option>Coordenador de Núcleo Pedagógico</option>
+            </select>
+
+                <button class="btn" type="submit" onclick="return valida()">ACESSAR!</button>
+        </div>
+
+        
+    </div>
+
+        
+</form>
+    
+</body>
+</html>
