@@ -1,3 +1,8 @@
+<?php
+    require_once 'php/usuario.php';
+    $usuario = new Usuario('localhost','dev_web','root','');
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -14,16 +19,36 @@
     <form class= "editar"action="">
         <div class="indice-lado">
             <ul style="list-style: none;">
-            <li><a href="inseretrabalhador.html">Inserir</a></li>
-            <li><a href="editaHora.html">Editar</a></li>
+            <li><a href="inseretrabalhador.php">Inserir</a></li>
+            <li><a href="editaHora.php">Editar</a></li>
             <li><a href="">Visualizar</a></li>
           </ul>
         </div>
     <div class="card-insere-trabalhador">
         
-        <div>
-            <h2 class="usuario">Usuário: Tanto Faz</h2>
-            <h2 class="perfil">Perfil:Trabalhador</h2>
+    <div class="usuario-perfil" >
+            <h2 class="usuario"><?php 
+            $user = $usuario->getTrab_id();
+            for ($i=0; $i < count($user); $i++) { 
+                foreach ($user[$i] as $k => $v) {
+                    if($k == "usuario"){
+                    echo "Usuario: ".$v;
+                    }
+            }
+        }
+           
+            ?></h2>
+            <h2 class="perfil"><?php 
+            $user = $usuario->getTrab_id();
+            for ($i=0; $i < count($user); $i++) { 
+                foreach ($user[$i] as $k => $v) {
+                    if($k == "Tipo"){
+                    echo "Tipo: ".$v;
+                    }
+            }
+        }
+           
+            ?></h2>
         </div>
         <div class="card-group"> 
             <h2>Consulta</h2>
@@ -57,29 +82,39 @@
                         <th>Total Horas</th>
                         <th>Justificativa</th>
                     </tr>
-                    <td>4/9/2020</td>
-                    <td>6:52</td>
-                    <td>17:52</td>
-                    <td>222</td>
-                    <td>Prod.Conteudo</td>
-                    <tr><td>5/9/2020</td>
-                        <td>6:30</td>
-                        <td>17:52</td>
-                        <td>222</td>
-                        <td>Versionamento</td>
-                     </tr>
-                     <tr><td>6/09/2020</td>
-                        <td>7:02</td>
-                        <td>17:52</td>
-                        <td>222</td>
-                        <td>Capacitação</td>
-                     </tr>
-                     <tr><td>7/09/2020</td>
-                        <td>7:00</td>
-                        <td>17:52</td>
-                        <td>222</td>
-                        <td>Empréstimo</td>
-                     </tr>
+                    <?php
+            $dados = $usuario->searchDb();
+            if(count($dados) > 0){
+                
+                for($i=0;$i < count($dados); $i++){
+                    echo "<tr>";
+                    $sum = null;
+                    $entrada = null;
+                    $saida = null;
+                    foreach ($dados[$i] as $k => $v) {
+                       
+
+                        if($k == "horaEntrada"){
+                            $entrada = new DateTime($v);
+                        }else if($k == "horaSaida"){
+                            $saida = new DateTime($v);
+                        }
+
+                        if($k != "horaEntrada" && $k != "horaSaida" && $k!= "dataAtual" && $k != "ID_horaTrab" && $k != "ID_user"){
+                            $sum = $entrada->diff($saida);
+                            echo "<td>".$sum->h."</td>";
+                        } 
+
+                        if($k != "ID_horaTrab" && $k != "ID_user"){
+                            echo "<td>".$v."</td>";
+                        }
+                    }
+                    echo "<tr>";
+                    
+                }
+                
+            }
+            ?>
                 </thread>
             </table>
             <div class="icons"><img src="css/imagem/pdf-download-2617 (2).png" alt=""><img src="css/imagem/excel-4963.png" alt=""><img src="css/imagem/printer-1434.png" alt=""></div>

@@ -1,3 +1,10 @@
+<?php
+
+require_once 'php/usuario.php';
+$usuario = new Usuario('localhost','dev_web','root','');
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -12,7 +19,7 @@
     <script>
         
         function verifica() {
-            var email = document.getElementById("email");
+            var email = document.getElementById("login");
             var password = document.getElementById("password");
 
 
@@ -36,7 +43,7 @@
 
 <body>
 
-    <form class="form" method="POST" action="php/bangdophp.php">
+    <form class="form" method="POST" action=ope.php>
 
         <div class="card">
             <div class="card-top">
@@ -46,13 +53,13 @@
             </div>
             <div class="card-group">
                 <label>Email</label>
-                <input id="email" type="text" name="email" placeholder="Digite seu email de Login" required>
+                <input id="loginzinho" type="text" name="login" placeholder="Digite seu email de Login" required>
 
                 <label>Senha</label>
                 <input id="password" type="password" name="senha" placeholder="Digite sua senha" required>
 
                 <a
-                    href="https://www.tuasaude.com/como-substituir-o-pao/#:~:text=Alimentos%20saudáveis%20para%20substituir%20o%20pão&text=Uma%20boa%20forma%20de%20substituir,um%20ovo%20cozido%2C%20por%20exemplo">Esqueci
+                    href="">Esqueci
                     a senha</a><br>
 
                 <div class="lembre"><input type="checkbox"> Lembre-me </label></div>

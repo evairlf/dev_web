@@ -50,10 +50,13 @@ flex-direction: column;
 border-radius: 20px;
 }
 
-.usuario-perfil{
+.usuarioperfil{
     background-color: rgb(20, 130, 194);
     padding: 0px;
     padding: auto;
+    flex-direction: column;
+    width: auto;
+    width: 50%;
     position:relative;
     border-radius: 20px;
 }
@@ -311,4 +314,21 @@ td{
     position: relative;
     list-style: none;
     text-align: center;
+}
+
+.btn-icon{
+    border: 0;
+    width: 45%;
+}
+
+.btn-icon:hover{
+    background-color:rgb(80, 170, 230);
+    border-radius: 100px;
+}
+
+.divisaoEdit{
+    width: 500px;
+    margin: auto;
+    padding-top:40px;
+    display: none;
 }
