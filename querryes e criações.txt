@@ -10,16 +10,19 @@ CREATE TABLE Usuarios
 
 
 // Cria a tabela da hora do trabalhador e usa o id_user da tabela usuario como chave estrangeira
-CREATE TABLE horaTrabalhador
+CREATE TABLE horatrabalhador
 (
     ID_horaTrab integer PRIMARY KEY AUTO_INCREMENT,
     dataAtual date,
     horaEntrada time,
     horaSaida time,
     Justificativa varchar(255),
-    ID_user integer,
+    ID_user integer NOT NULL,
     CONSTRAINT fk_UsuHora FOREIGN KEY (ID_user) REFERENCES usuarios (ID_user)
 );
+
+//CASO USE ISTO LEMBRESE DO USUARIO E SENHA
+INSERT INTO usuarios(usuario,senha,tipo) VALUES('ronaldo','123','versionamento');
 
 https://pt.stackoverflow.com/questions/262064/pegar-valor-de-input-html-e-passar-para-vari%C3%A1vel-em-php
 

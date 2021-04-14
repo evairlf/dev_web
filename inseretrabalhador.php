@@ -162,7 +162,6 @@
                             <th>Hora Saida</th>
                             <th>Total Horas</th>
                             <th>Justificativa</th>
-                            <th>Opções</th>
                         </tr>
                         <?php
             $dados = $usuario->searchDb();
@@ -191,9 +190,7 @@
                             echo "<td>".$v."</td>";
                         }
                     }
-                    ?><td><button class="btn-icon"  ><img src="css/imagem/u206.png"></button>
-                <button class="btn-icon" style="height: 100%;"><img src="css/imagem/u220.png" alt=""> </button> 
-            </td><?php
+                    ?><?php
                     echo "<tr>";
                     
                 }
@@ -203,11 +200,7 @@
                     </thread>
                 </table>
 
-                <div>
-                    <h2>Legenda: </h2>
-                    <p id="legenda"><img src="css/imagem/u206.png" alt="xinforinfolaespectral"> Editar <img
-                            src="css/imagem/u220.png" alt="xinforinfolaespectral"> Apagar</p>
-                </div>
+                
                 <button class="btn" style="width: 20%;float:center ;" type="submit">Voltar</button><button class="btn" style="width: 20%;float:right ;" type="button">Enviar para Analise</button>
                      
                 

@@ -58,16 +58,19 @@ $logado = $_SESSION['login'];
 </head>
 
 <body>
-    <div class="indice">
+
+        
+<div class="indice">
         <ul class="indice">
             <li><a href="inseretrabalhador.php">Inserir</a></li>
             <li><a href="editaHora.php">Editar</a></li>
             <li><a href="Visualizar.php">Visualizar</a></li>
         </ul>
-    </div>
-    <div class="card-insere-trabalhador">
-        <form class="" action="" method="POST">
-
+    </div> 
+   <div class="planEditarHora">
+        
+        <form class="card-insere-trabalhador" action="" method="POST">
+         
             <div class="">
 
                 <div class="usuario-perfil">
@@ -136,7 +139,8 @@ $logado = $_SESSION['login'];
                         $dados = $usuario->searchWithDate($dataEntrada, $dataSaida, $idzinho, $Justificativa);
                     }
                     
-                    
+                    unset($_POST['dataSaida']);
+                    unset($_POST['dataEntrada']);
                     ?>
 
                     <div><button id="bt-insere" type="submit" onclick="return validaHora()">Inserir</button></div>
@@ -157,7 +161,7 @@ $logado = $_SESSION['login'];
                     </tr>
 
                     <?php
-                    if ( $dados != null) {
+                    if (!empty($dados)) {
                         if(count($dados)>0){
                         for ($i = 0; $i < count($dados); $i++) {
                             echo "<tr>";
@@ -186,8 +190,8 @@ $logado = $_SESSION['login'];
                             }
                     ?>      
                             
-                            <td><a href="editaHora.php?value=<?php echo $dados[$i]['ID_horaTrab']; ?>"><img src="css/imagem/u206.png"></a>
-                                <a href="index.php?value=<?php echo $id_hora = $dados[$i]['ID_horaTrab']; ?>">
+                            <td><a href="editaHora.php?edit=<?php echo $dados[$i]['ID_horaTrab']; ?>"><img src="css/imagem/u206.png"></a>
+                                <a href="editaHora.php?value=<?php echo $id_hora = $dados[$i]['ID_horaTrab']; ?>">
                                     <img src="css/imagem/u220.png" alt=""></a>
                             </td><?php
                                    
@@ -219,7 +223,7 @@ $logado = $_SESSION['login'];
 
 
     </div>
-
+    
 </body>
 
 </html>
@@ -230,6 +234,6 @@ if (isset($_GET['value'])) {
     $usuario1 = addslashes($_SESSION['login']);
     $id_trab = addslashes($_GET['value']);
     $usuario->deleteFromTable($id_trab);
-    header("location: index.php");
+   // header("location: index.php");
 }
 ?>

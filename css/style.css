@@ -332,3 +332,13 @@ td{
     padding-top:40px;
     display: none;
 }
+
+.planEditarHora{
+    position: relative;
+    background-color: white;
+    display: flex;
+    align-self: center;
+    width: auto;
+    flex-direction: column;
+    border-radius: 20px;
+}

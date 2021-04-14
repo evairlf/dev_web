@@ -112,10 +112,25 @@ class Usuario{
 
     public function deleteFromTable($id_hora){
         $cmd = $this->pdo->prepare("DELETE FROM horatrabalhador WHERE ID_horaTrab = :id_hr");
-        $cmd->bindValue("id_hr",$id_hora);
+        $cmd->bindValue(":id_hr",$id_hora);
         //$cmd->bindValue(":id_usr",$usuario1);
         $cmd->execute();
     }
+
+    public function searchHrForID($id_hora){
+
+        $res = array();
+        $cmd = $this->pdo->prepare("SELECT * FROM horatrabalhador WHERE ID_hora = :id");
+        $cmd->bindValue(":id",$id_hora);
+        $cmd->execute();
+        $res = $cmd->fetchAll(PDO::FETCH_ASSOC);
+        return $res;
+    }
+
+    public function attDados(){
+        
+    }
+    
 }
 
 ?>
