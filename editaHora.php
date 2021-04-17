@@ -59,19 +59,19 @@ $logado = $_SESSION['login'];
 
 <body>
 
-        
-<div class="indice">
-        <ul class="indice">
-            <li><a href="inseretrabalhador.php">Inserir</a></li>
-            <li><a href="editaHora.php">Editar</a></li>
-            <li><a href="Visualizar.php">Visualizar</a></li>
-        </ul>
-    </div> 
-   <div class="planEditarHora">
-        
+
+
+    <div class="editar">
+        <div class="indice">
+            <ul class="indice">
+                <li><a href="inseretrabalhador.php">Inserir</a></li>
+                <li><a href="editaHora.php">Editar</a></li>
+                <li><a href="Visualizar.php">Visualizar</a></li>
+            </ul>
+        </div>
         <form class="card-insere-trabalhador" action="" method="POST">
-         
-            <div class="">
+
+            <div class="card-insere-trabalhador">
 
                 <div class="usuario-perfil">
                     <h2 class="usuario"><?php
@@ -119,7 +119,8 @@ $logado = $_SESSION['login'];
                             </td>
                         </thread>
                     </table>
-                    <?php
+                    <?php          
+
                     if (isset($_POST['dataEntrada'])) {
                         $dataEntrada = addslashes($_POST['dataEntrada']);
                         $dataSaida = addslashes($_POST['dataSaida']);
@@ -133,18 +134,92 @@ $logado = $_SESSION['login'];
                                 }
                             }
                         }
-                        
                     }
-                    if(isset($_POST['dataSaida'])){
+                    if (isset($_POST['dataSaida'])) {
                         $dados = $usuario->searchWithDate($dataEntrada, $dataSaida, $idzinho, $Justificativa);
                     }
-                    
+
                     unset($_POST['dataSaida']);
                     unset($_POST['dataEntrada']);
                     ?>
 
                     <div><button id="bt-insere" type="submit" onclick="return validaHora()">Inserir</button></div>
         </form>
+
+       <!-- editar hora --> 
+
+        <form style="padding-top: 10px;" method="POST">
+        <?php
+            
+                    if(isset($_GET['edit'])){
+                        $update = addslashes($_GET['edit']);
+                        $res = $usuario->searchHrForID($update);
+                        for ($i = 0; $i < count($res); $i++) {
+                            echo "<tr>";
+                            $dataAtual = null;
+                            $hrent = null;
+                            $hrsai = null;
+                            $justy = null;
+                            foreach ($res[$i] as $k => $v) {
+
+                                if($k == 'dataAtual' ){
+                                    $dataAtual = $v;
+                                }
+                                if($k == 'horaEntrada'){
+                                    $hrent = $v;
+                                }
+                                if($k == 'horaSaida'){
+                                    $hrsai = $v;
+                                }
+                                if($k == 'Justificativa'){
+                                    $justy =  $v;
+                                }
+
+                                
+                            }
+                    }
+                }
+                    ?>
+            <table align="center">
+                <thread>
+                    <tr>
+                        <th>Data Entrada</th>
+                        <th>Hora Entrada</th>
+                        <th>Hora Saida</th>
+                        <th>Justificativa</th>
+                    </tr>
+                    <td><input id="dataEdit" name="dataEdit" type="date" value="<?php echo $dataAtual ?>"></td>
+                    <td><input id="horaEntEdit" name="horaEntEdit" type="time" value="<?php echo $hrent ?>"></td>
+                    <td><input id="bugoufoi" name="bugoufoi" type="time" value="<?php echo $hrsai ?>"></td>
+                    <td>
+                        <form method="POST"><select id="Just" name="Just">
+                                <option value="Prod. Conteudo">Prod.Conteudo</option>
+                                <option value="Versionamento">Versionamento</option>
+                                <option value="Capacitação">Capacitação</option>
+                                <option value="Emprestimo">Empréstimo</option>
+                            </select></form>
+                    </td>
+
+                    <?php
+                    if(isset($_POST['dataEdit'])){
+                    $id_hr = $_GET['edit'];
+                    $dataEdit = addslashes($_POST['dataEdit']);
+                    $horaEntEdit = addslashes($_POST['horaEntEdit']);
+                    $horaSaiEdit = addslashes($_POST['bugoufoi']);
+                    $JustifiEdit = addslashes($_POST['Just']);
+
+                   if($usuario->attDados($id_hr,$dataEdit,$horaEntEdit,$horaSaiEdit,$JustifiEdit)){
+                       echo "<h2>".'Editado com Sucesso!'."<h2>";
+                   }
+                 }
+                 ?>
+
+                </thread>
+
+            </table>
+            <a type="button"> <button id="bt-insere" type="submit" >Editar</button></a>
+        </form>
+
         <form class="" action="" method="GET">
             <h2>Lista De Horas</h2>
 
@@ -162,43 +237,41 @@ $logado = $_SESSION['login'];
 
                     <?php
                     if (!empty($dados)) {
-                        if(count($dados)>0){
-                        for ($i = 0; $i < count($dados); $i++) {
-                            echo "<tr>";
-                            $sum = null;
-                            $entrada = null;
-                            $saida = null;
-                            $ID_Horatrab = null;
-                            foreach ($dados[$i] as $k => $v) {
+                        if (count($dados) > 0) {
+                            for ($i = 0; $i < count($dados); $i++) {
+                                echo "<tr>";
+                                $sum = null;
+                                $entrada = null;
+                                $saida = null;
+                                $ID_Horatrab = null;
+                                foreach ($dados[$i] as $k => $v) {
 
-                                if ($k == "horaEntrada") {
-                                    $entrada = new DateTime($v);
-                                } else if ($k == "horaSaida") {
-                                    $saida = new DateTime($v);
+                                    if ($k == "horaEntrada") {
+                                        $entrada = new DateTime($v);
+                                    } else if ($k == "horaSaida") {
+                                        $saida = new DateTime($v);
+                                    }
+
+                                    if ($k != "horaEntrada" && $k != "horaSaida" && $k != "dataAtual" && $k != "ID_horaTrab" && $k != "ID_user") {
+                                        $sum = $entrada->diff($saida);
+                                        echo "<td>" . $sum->h . "</td>";
+                                    }
+
+                                    if ($k != "ID_horaTrab" && $k != "ID_user") {
+                                        echo "<td>" . $v . "</td>";
+                                    }
                                 }
+                    ?>
 
-                                if ($k != "horaEntrada" && $k != "horaSaida" && $k != "dataAtual" && $k != "ID_horaTrab" && $k != "ID_user") {
-                                    $sum = $entrada->diff($saida);
-                                    echo "<td>" . $sum->h . "</td>";
+                                <td><a href="editaHora.php?edit=<?php echo $dados[$i]['ID_horaTrab']; ?>"><img src="css/imagem/u206.png"></a>
+                                    <a href="editaHora.php?value=<?php echo $id_hora = $dados[$i]['ID_horaTrab']; ?>">
+                                        <img src="css/imagem/u220.png" alt=""></a>
+                                </td><?php
+
+                                    }
                                 }
-
-                                if ($k != "ID_horaTrab" && $k != "ID_user") {
-                                    echo "<td>" . $v . "</td>";
-                                }
-
-
                             }
-                    ?>      
-                            
-                            <td><a href="editaHora.php?edit=<?php echo $dados[$i]['ID_horaTrab']; ?>"><img src="css/imagem/u206.png"></a>
-                                <a href="editaHora.php?value=<?php echo $id_hora = $dados[$i]['ID_horaTrab']; ?>">
-                                    <img src="css/imagem/u220.png" alt=""></a>
-                            </td><?php
-                                   
-                        }
-                    }
-                            }
-                                    ?>
+                                        ?>
 
 
                 </thread>
@@ -211,7 +284,7 @@ $logado = $_SESSION['login'];
 
     </div>
     <div class="bts"><button id="bt-insere" type="submit">Voltar</button>
-        <a href="analise.html" type="button"> <button id="bt-insere" type="button">Enviar para Analise</button></a>
+        <a href="" type="button"> <button id="bt-insere" type="button">Enviar para Analise</button></a>
     </div>
 
     </div>
@@ -223,7 +296,7 @@ $logado = $_SESSION['login'];
 
 
     </div>
-    
+
 </body>
 
 </html>
@@ -234,6 +307,6 @@ if (isset($_GET['value'])) {
     $usuario1 = addslashes($_SESSION['login']);
     $id_trab = addslashes($_GET['value']);
     $usuario->deleteFromTable($id_trab);
-   // header("location: index.php");
+    // header("location: index.php");
 }
 ?>

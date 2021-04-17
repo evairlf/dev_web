@@ -120,15 +120,27 @@ class Usuario{
     public function searchHrForID($id_hora){
 
         $res = array();
-        $cmd = $this->pdo->prepare("SELECT * FROM horatrabalhador WHERE ID_hora = :id");
+        $cmd = $this->pdo->prepare("SELECT * FROM horatrabalhador WHERE ID_horaTrab = :id");
         $cmd->bindValue(":id",$id_hora);
         $cmd->execute();
         $res = $cmd->fetchAll(PDO::FETCH_ASSOC);
         return $res;
     }
 
-    public function attDados(){
-        
+    public function attDados($id_hr,$data,$hr_entrada,$hr_saida,$Justificativa){
+        $cmd = $this->pdo->prepare("UPDATE horatrabalhador SET dataAtual = :dt, horaEntrada = :hrnet, horaSaida = :hrsai,
+         Justificativa = :just WHERE ID_horaTrab = :idora");
+        $cmd->bindValue(":idora",$id_hr);
+        $cmd->bindValue(":dt",$data);
+        $cmd->bindValue(":hrnet",$hr_entrada);
+        $cmd->bindValue(":hrsai",$hr_saida);
+        $cmd->bindValue(":just",$Justificativa);
+        $res = $cmd->execute();
+        if(is_null($res)){
+            return false;
+        }else{
+            return true;
+        }
     }
     
 }
